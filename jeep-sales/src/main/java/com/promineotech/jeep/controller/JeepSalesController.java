@@ -50,11 +50,22 @@ public interface JeepSalesController {
 				
 				parameters = {
 						@Parameter(name = "model", allowEmptyValue =false, required = false, desctiption = " model name ");
-						@Parafmeter(name = "trim", allowEmptyValue = false, required = false,description = "The trim level" );
+						@Parameter(name = "trim", allowEmptyValue = false, required = false,description = "The trim level" );
 						}
 				)}
-			// @formatter:on
-	  }
+			
+				@GetMapping
+				@ResponseStatus(code = HttpStatus.OK)
+				List<Jeep> fetchJeeps (
+				@RequestParam(required = false)
+				String model, 
+				@RequestParam(required = false)
+				String trim);
+				
+				
+				// @formatter:on
+	  
+}
 }
 	  
 }
