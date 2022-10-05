@@ -1,0 +1,16 @@
+package com.promineotech.jeep.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.promineotech.jeep.entity.Jeep;
+
+@RestController
+public abstract class BasicJeepSalesController implements JeepSalesController {
+	
+	@Override
+	public List<com.promineotech.jeep.entity.JeepEntity.Jeep> fetchJeeps(String model, String trim){
+	return null;//If application is acting weird try to return the list instead of null
+}
+}
