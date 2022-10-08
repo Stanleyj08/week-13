@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Jeep {
 	private Long modelPK;
 	private JeepModel modelId;
@@ -18,4 +19,9 @@ public class Jeep {
 	private int numDoors;
 	private int wheelSize;
 	private BigDecimal basePrice;
+	//public static Object builder() {
+		// TODO Auto-generated method stub
+		//return null;
+	//}
+	
 }

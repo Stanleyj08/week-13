@@ -1,0 +1,85 @@
+package com.promineotech.jeep.controller;
+import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import com.promineotech.jeep.entity.Jeep;
+import com.promineotech.jeep.entity.JeepModel;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.servers.Server;
+import io.swagger.v3.oas.annotations.Parameter;
+
+
+
+
+
+@RequestMapping("/jeeps")//any uri that comes in that has jeeps after the port will be mapped to this class
+@OpenAPIDefinition(info = @Info(title = "Jeep Sales Service"), servers = {
+		@Server(url = "http://localhost:8080", description = "Local server.")})
+//the name that will appear on the swagger open api documentation will be Jeep Sales service
+//@server will specify a url that swagger will use to perform operations
+
+ //@RequestMapping("/jeeps")
+public interface JeepSalesController {
+	// @formatter:off
+		@Operation(//SUmmary is a parameter to the operation annotation
+				summary = "Returns a list of Jeeps",
+				description = "Returns a list of Jeeps given an optional model and/or trim",
+				responses = {
+						@ApiResponse(//annotation used to describe the response codes I choose to describe
+								//for the first parameter of the api response put in a response code
+								responseCode = "200",
+								description = "A list of Jeeps is returned",
+								content = @Content( //This parameter tells open api what kind of content will be returning 
+										//this is an ok response so it allows schema to implement Jeep class
+										mediaType = "application/json",
+										schema = @Schema(implementation = Jeep.class))),
+						@ApiResponse(
+								responseCode = "400",
+								description = "The request parameters are invalid",
+								content = @Content(mediaType = "application/json")),
+						@ApiResponse(
+								responseCode = "404",
+								description = "No Jeeps were found with the input criteria",
+								content = @Content(mediaType = "application/json")),
+						@ApiResponse(
+								responseCode = "500",
+								description = "an unplanned error occurred",
+								content = @Content(mediaType = "application/json"))
+				},
+				parameters = {//describing the param set in the uri to open api
+						@Parameter(
+								name = "model",
+								allowEmptyValue = false,//if an emptyvalue is put in it will change to null
+								required = false,//not required
+								description = "The model name (i.e., 'WRANGLER')"),
+						@Parameter(
+								name = "trim",
+								allowEmptyValue = false,
+								required = false,
+								description = "The trim level (i.e., 'Sport')")
+				}
+			)
+			
+				
+			//Now tell spring how to handle the method, class, and the request parameters
+		
+		  	@GetMapping//Map a get request on /jeeps to this method by using this annotation
+		  	@ResponseStatus(code = HttpStatus.OK)//this means the JeepSalesController Spring will map all requests
+		//with /jeeps to this class// it will map the request to the method fetchJeeps and if all
+		//is well it will return a response status of ok or 200
+		  	List<Jeep> fetchJeeps(//adding sping annotations to map the parameters since the one we did in 
+		  			//open api will not be read by spring so we must do it for spring
+				  @RequestParam(required = false)
+				  	String model,
+				  @RequestParam(required = false)
+				  	String trim);		// @formatter:on
+
+}

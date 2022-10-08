@@ -2,14 +2,33 @@ package com.promineotech.jeep.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.promineotech.jeep.entity.Jeep;
+import com.promineotech.jeep.service.JeepSalesService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 @RestController
+@Slf4j
 public class BasicJeepSalesController implements JeepSalesController{
+	
+	@Autowired
+	private JeepSalesService jeepSalesService;
+	
+	
+	
+	Logger log = LoggerFactory.getLogger(getClass());    
 	@Override
 	public List<Jeep> fetchJeeps(String model, String trim) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		  log.info("model={}, trim={}", model, trim);
+		 
+		return jeepSalesService.fetchJeeps(model, trim);
 	}
 }
+//You have to tell springboot this is a restcontroller and you cannot do it in the interface
+//do it in the class that is the point of this class

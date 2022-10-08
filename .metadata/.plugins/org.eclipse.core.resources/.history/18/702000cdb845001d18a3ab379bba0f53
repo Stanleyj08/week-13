@@ -1,0 +1,17 @@
+package com.promineotech.jeep.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.promineotech.jeep.entity.Jeep;
+@RestController
+public class BasicJeepSalesController implements JeepSalesController{
+	@Override
+	public List<Jeep> fetchJeeps(String model, String trim) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+//You have to tell springboot this is a restcontroller and you cannot do it in the interface
+//do it in the class that is the point of this class

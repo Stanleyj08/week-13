@@ -20,21 +20,25 @@ import io.swagger.v3.oas.annotations.Parameter;
 
 
 
-@RequestMapping("/jeeps")
+@RequestMapping("/jeeps")//any uri that comes in that has jeeps after the port will be mapped to this class
 @OpenAPIDefinition(info = @Info(title = "Jeep Sales Service"), servers = {
 		@Server(url = "http://localhost:8080", description = "Local server.")})
+//the name that will appear on the swagger open api documentation will be Jeep Sales service
+//@server will specify a url that swagger will use to perform operations
 
  //@RequestMapping("/jeeps")
 public interface JeepSalesController {
 	// @formatter:off
-		@Operation(
+		@Operation(//SUmmary is a parameter to the operation annotation
 				summary = "Returns a list of Jeeps",
 				description = "Returns a list of Jeeps given an optional model and/or trim",
 				responses = {
-						@ApiResponse(
+						@ApiResponse(//annotation used to describe the response codes I choose to describe
+								//for the first parameter of the api response put in a response code
 								responseCode = "200",
 								description = "A list of Jeeps is returned",
-								content = @Content(
+								content = @Content( //This parameter tells open api what kind of content will be returning 
+										//this is an ok response so it allows schema to implement Jeep class
 										mediaType = "application/json",
 										schema = @Schema(implementation = Jeep.class))),
 						@ApiResponse(
@@ -50,11 +54,11 @@ public interface JeepSalesController {
 								description = "an unplanned error occurred",
 								content = @Content(mediaType = "application/json"))
 				},
-				parameters = {
+				parameters = {//describing the param set in the uri to open api
 						@Parameter(
 								name = "model",
-								allowEmptyValue = false,
-								required = false,
+								allowEmptyValue = false,//if an emptyvalue is put in it will change to null
+								required = false,//not required
 								description = "The model name (i.e., 'WRANGLER')"),
 						@Parameter(
 								name = "trim",
@@ -65,13 +69,17 @@ public interface JeepSalesController {
 			)
 			
 				
-			
-		  	@GetMapping
-		  	@ResponseStatus(code = HttpStatus.OK)
-		  	List<Jeep> fetchJeeps(
+			//Now tell spring how to handle the method, class, and the request parameters
+		
+		  	@GetMapping//Map a get request on /jeeps to this method by using this annotation
+		  	@ResponseStatus(code = HttpStatus.OK)//this means the JeepSalesController Spring will map all requests
+		//with /jeeps to this class// it will map the request to the method fetchJeeps and if all
+		//is well it will return a response status of ok or 200
+		  	List<Jeep> fetchJeeps(//adding sping annotations to map the parameters since the one we did in 
+		  			//open api will not be read by spring so we must do it for spring
 				  @RequestParam(required = false)
-				  	String model,
+				  	String model,//setting the first parameter to a value called model
 				  @RequestParam(required = false)
 				  	String trim);		// @formatter:on
-
+//setting the second parameter in the api to a value in fetchJeeps called trim
 }
