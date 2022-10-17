@@ -7,7 +7,6 @@
     <fullyQualifiedTypeName name="org.springframework.test.context.ActiveProfiles"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.context.SpringBootTest"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.web.server.LocalServerPort"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.web.client.TestRestTemplate"/>
     <fullyQualifiedTypeName name="java.math.BigDecimal"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
@@ -21,7 +20,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
-    <fullyQualifiedTypeName name="com.promineotech.jeep.entity.JeepModel"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.promineotech.jeep.entity.JeepEntity.Jeep"/>
@@ -33,4 +31,9 @@
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.servers.Server"/>
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.Parameter"/>
     <fullyQualifiedTypeName name="com.promineotech.jeep.controller.JeepSalesController"/>
+    <fullyQualifiedTypeName name="com.promineotech.jeep.entity.JeepModel"/>
+    <fullyQualifiedTypeName name="com.promineotech.jeep.dao.JeepSalesDao"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 </qualifiedTypeNameHistroy>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.promineotech.jeep.entity.Jeep;
+import com.promineotech.jeep.entity.JeepModel;
 import com.promineotech.jeep.service.JeepSalesService;
 
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class BasicJeepSalesController implements JeepSalesController{
 	
 	Logger log = LoggerFactory.getLogger(getClass());    
 	@Override
-	public List<Jeep> fetchJeeps(String model, String trim) {
+	public List<Jeep> fetchJeeps(JeepModel model, String trim) {
 	
 		  log.info("model={}, trim={}", model, trim);
 		 

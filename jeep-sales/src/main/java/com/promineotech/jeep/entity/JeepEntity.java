@@ -7,16 +7,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+@Data 
+@Builder 
+@NoArgsConstructor 
+@AllArgsConstructor 
 public class JeepEntity {
-	@Data 
+	
 
-	@Builder 
-
-	@NoArgsConstructor 
-
-	@AllArgsConstructor 
-
-	public class Jeep { 
+	
 
 	  private Long modelPK; 
 
@@ -31,4 +30,4 @@ public class JeepEntity {
 	  private BigDecimal basePrice; 
 
 	} 
-}
+

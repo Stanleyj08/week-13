@@ -2,8 +2,6 @@ package com.promineotech.jeep.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.math.BigDecimal;
-import java.util.LinkedList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +31,7 @@ import com.promineotech.jeep.entity.JeepModel;
     "classpath:flyway/migrations/V1.1__Jeep_Data.sql"},  
 
     config = @SqlConfig(encoding = "utf-8")) 
+//config encoding to utf-8 so all characters are read corretly
 class FetchJeepTest extends fetchJeepTestSupport{
 	@Autowired 
 	private TestRestTemplate restTemplate; 
@@ -51,9 +50,14 @@ class FetchJeepTest extends fetchJeepTestSupport{
 		ResponseEntity<List<Jeep>> response = restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK); 
 		//next part
+		List<Jeep> actual = response.getBody();
 		List<Jeep> expected = buildExpected();
+		
+		actual.forEach(jeep -> jeep.setModelPK(null));
+		//this will loop through a list called actual it will return the values as jeep and on each
+		//one returned we are setting modelPk to null
 		System.out.println(expected);
-		assertThat(response.getBody()).isEqualTo(expected);
+		assertThat(actual).isEqualTo(expected);
 	}//The test rest template will convert the json response body back into a list of jeeps
 	//we can assert that response.getBody is a list of jeep
 

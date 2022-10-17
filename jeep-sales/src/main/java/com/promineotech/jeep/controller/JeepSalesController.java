@@ -78,7 +78,7 @@ public interface JeepSalesController {
 		  	List<Jeep> fetchJeeps(//adding sping annotations to map the parameters since the one we did in 
 		  			//open api will not be read by spring so we must do it for spring
 				  @RequestParam(required = false)
-				  	String model,//setting the first parameter to a value called model
+				  	JeepModel model,//setting the first parameter to a value called model
 				  @RequestParam(required = false)
 				  	String trim);		// @formatter:on
 //setting the second parameter in the api to a value in fetchJeeps called trim

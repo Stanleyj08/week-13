@@ -1,6 +1,0 @@
-package com.promineotech.jeep.controller;
-
-public enum JeepModel {
-	WRANGLER
-
-}
