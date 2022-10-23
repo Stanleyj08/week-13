@@ -1,0 +1,26 @@
+package com.promineotech.jeep.dao;
+
+import java.util.Optional;
+
+import javax.validation.constraints.NotNull;
+
+import com.promineotech.jeep.entity.Customer;
+import com.promineotech.jeep.entity.JeepModel;
+import com.promineotech.jeep.entity.Order;
+import com.promineotech.jeep.entity.OrderRequest;
+import com.promineotech.jeep.entity.Tire;
+import com.promineotech.jeep.service.Jeep;
+
+public interface JeepOrderDao {
+
+	Customer fetchCustomer(@NotNull String customer);
+
+	Jeep fetchModel(@NotNull JeepModel model);
+
+	/**
+	   * 
+	   */
+	Optional<Tire> fetchTire(String tireId);
+	
+
+}

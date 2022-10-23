@@ -26,7 +26,7 @@ public class DefaultJeepSalesDao implements JeepSalesDao {
 	
 	@Override
 	public List<Jeep> fetchJeeps(JeepModel model, String trim) {
-		log.debug("DAO: model=[], trim=[]", model, trim);
+		log.debug("DAO: model={}, trim={}", model, trim);
 		//formatter:off
 		String sql = ""
 				+"SELECT * "
@@ -54,7 +54,7 @@ public class DefaultJeepSalesDao implements JeepSalesDao {
 						.build();
 				
 				//formatter:on
-			}});
+			}});//this builder is building the jeep object for the actual value in fetch Jeep Test
 	}
 
 }

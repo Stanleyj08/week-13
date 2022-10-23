@@ -12,23 +12,37 @@ public class fetchJeepTestSupport {
 		
 		//@formatter:off
 		List<Jeep> list = new LinkedList<>();
-		
 		list.add(Jeep.builder()
 				.modelId(JeepModel.WRANGLER)
-				.trimLevel("Sport")
+				.trimLevel("Willys Sport")
 				.numDoors(2)
 				.wheelSize(17)
-				.basePrice(new BigDecimal("28475.00"))
+				.basePrice(new BigDecimal("30420.00"))
 				.build());
-		//@formatter:on
 		
 		list.add(Jeep.builder()
 				.modelId(JeepModel.WRANGLER)
-				.trimLevel("Sport")
+				.trimLevel("Willys Sport")
 				.numDoors(4)
 				.wheelSize(17)
-				.basePrice(new BigDecimal("31975.00"))
+				.basePrice(new BigDecimal("33920.00"))
 				.build());
+		//list.add(Jeep.builder()
+				//.modelId(JeepModel.WRANGLER)
+				//.trimLevel("Sport")
+				//.numDoors(2)
+				//.wheelSize(17)
+				//.basePrice(new BigDecimal("28475.00"))
+				//.build());
+		//@formatter:on
+		
+		//list.add(Jeep.builder()
+				//.modelId(JeepModel.WRANGLER)
+				//.trimLevel("Sport")
+				//.numDoors(4)
+				//.wheelSize(17)
+				//.basePrice(new BigDecimal("31975.00"))
+				//.build());
 		
 		return list;
 	}

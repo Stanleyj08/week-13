@@ -1,6 +1,7 @@
 package com.promineotech.jeep.controller;
 import java.util.List;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 
 
 
-
+@Validated
 @RequestMapping("/jeeps")//any uri that comes in that has jeeps after the port will be mapped to this class
 @OpenAPIDefinition(info = @Info(title = "Jeep Sales Service"), servers = {
 		@Server(url = "http://localhost:8080", description = "Local server.")})

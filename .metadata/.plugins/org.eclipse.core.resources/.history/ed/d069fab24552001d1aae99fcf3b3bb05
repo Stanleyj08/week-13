@@ -1,0 +1,10 @@
+package com.promineotech.jeep.controller;
+
+import com.promineotech.jeep.entity.Order;
+import com.promineotech.jeep.entity.OrderRequest;
+
+public class BasicJeepOrderController implements JeepOrderController {
+public Order CreateOrder(OrderRequest orderReqeust) {
+	return null;
+}
+}

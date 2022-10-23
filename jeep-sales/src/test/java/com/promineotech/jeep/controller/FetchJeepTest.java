@@ -3,6 +3,8 @@ package com.promineotech.jeep.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +24,7 @@ import org.springframework.http.HttpStatus;
 
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
-
+@Nested
 //import io.swagger.v3.oas.models.PathItem.HttpMethod;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) 
 @ActiveProfiles("test") 
@@ -44,12 +46,14 @@ class FetchJeepTest extends fetchJeepTestSupport{
 	@Test
 	void testThatJeepsAreReturnedWhenAValidModelAndTrimAreSupplied() {
 		JeepModel model = JeepModel.WRANGLER;
-		String trim = "Sport";
+		//String trim = "Sport";
+		String trim = "Willys Sport";
 		//String uri = String.format("String.format(\"http://localhost:%d/jeeps?model=%s&trim=%s\", serverPort, model, trim");
 		String uri = String.format("http://localhost:%d/jeeps?model=%s&trim=%s", serverPort, model, trim);
 		ResponseEntity<List<Jeep>> response = restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK); 
-		//next part
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK); //.get is is associating our getmapping method with the uri
+		//will search for the two instances with the params passed in set it equal to actual
+		//by calling the response body 
 		List<Jeep> actual = response.getBody();
 		List<Jeep> expected = buildExpected();
 		
@@ -57,12 +61,9 @@ class FetchJeepTest extends fetchJeepTestSupport{
 		//this will loop through a list called actual it will return the values as jeep and on each
 		//one returned we are setting modelPk to null
 		System.out.println(expected);
+		System.out.println(actual);
 		assertThat(actual).isEqualTo(expected);
 	}//The test rest template will convert the json response body back into a list of jeeps
-	//we can assert that response.getBody is a list of jeep
 
-
-
-	
 
 }
